@@ -19,6 +19,7 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN composer require drush/drush:8.x
 
 # Install openideal
-RUN /vendor/bin/drush make ./openideal/build-openideal-github.make /var/www/html/openideal
+COPY . /openideal
+RUN /vendor/bin/drush make /openideal/build-openideal-github.make /var/www/html/openideal
 WORKDIR /var/www/html
 RUN chown -R www-data:www-data .
